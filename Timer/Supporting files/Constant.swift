@@ -10,5 +10,10 @@ import Foundation
 
 let TIME = "time"
 let TITLE = "title"
-let SCREEN_LOCK = "screenLock"
+let IS_SCREEN_ALWAYS_ON = "isScreenAlwaysOn"
 let DEFAULT_SETTING = "defaultSetting"
+let SELECTED_TAG = "selectedTag"
+let TARGET_TIME = "targetTime"
+let START_DATE = "startDate"
+let STOP_WATCH_TIME = "stopWatchTime"
+let IS_RUNNING = "isRunning"

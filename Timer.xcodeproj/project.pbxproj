@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DC492F1826EDA89100D45F2F /* TimerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC492F1726EDA89100D45F2F /* TimerStatus.swift */; };
 		DC5E7BDD26ED92EC00FF738B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5E7BDC26ED92EC00FF738B /* AppDelegate.swift */; };
 		DC5E7BDF26ED92EC00FF738B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5E7BDE26ED92EC00FF738B /* SceneDelegate.swift */; };
 		DC5E7BE426ED92EC00FF738B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC5E7BE226ED92EC00FF738B /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DC492F1726EDA89100D45F2F /* TimerStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerStatus.swift; sourceTree = "<group>"; };
 		DC5E7BD926ED92EC00FF738B /* Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Timer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC5E7BDC26ED92EC00FF738B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DC5E7BDE26ED92EC00FF738B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +45,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DC492F1626EDA87200D45F2F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DC492F1726EDA89100D45F2F /* TimerStatus.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		DC5E7BD026ED92EC00FF738B = {
 			isa = PBXGroup;
 			children = (
@@ -62,6 +72,7 @@
 		DC5E7BDB26ED92EC00FF738B /* Timer */ = {
 			isa = PBXGroup;
 			children = (
+				DC492F1626EDA87200D45F2F /* Models */,
 				DC5E7C0226ED95BB00FF738B /* Views */,
 				DC5E7BFE26ED954100FF738B /* ViewControllers */,
 				DC5E7C0026ED959700FF738B /* Extentions */,
@@ -182,6 +193,7 @@
 				DC5E7C0426ED960400FF738B /* Int+timer.swift in Sources */,
 				DC5E7BFB26ED951A00FF738B /* UserDefaults+timer.swift in Sources */,
 				DC5E7BF826ED946E00FF738B /* Constant.swift in Sources */,
+				DC492F1826EDA89100D45F2F /* TimerStatus.swift in Sources */,
 				DC5E7BDD26ED92EC00FF738B /* AppDelegate.swift in Sources */,
 				DC5E7BDF26ED92EC00FF738B /* SceneDelegate.swift in Sources */,
 			);

@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Timer-->
+        <!--Timer View Controller-->
         <scene sceneID="SKZ-WN-Ev9">
             <objects>
-                <viewController id="hxV-xq-zqS" customClass="TimerViewController" customModule="CountDownTimer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="hxV-xq-zqS" customClass="TimerViewController" customModule="Timer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pR5-eS-V6v">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -22,14 +22,13 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="84f-Kc-KEr">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="404"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="icH-VJ-hdC">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4" textAlignment="center" lineBreakMode="tailTruncation" minimumScaleFactor="0.01" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="icH-VJ-hdC">
                                                 <rect key="frame" x="10.5" y="0.0" width="393" height="404"/>
-                                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="60"/>
-                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="400"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="icH-VJ-hdC" firstAttribute="width" secondItem="84f-Kc-KEr" secondAttribute="width" multiplier="0.95" id="9ii-lF-Y7g"/>
                                             <constraint firstItem="icH-VJ-hdC" firstAttribute="centerY" secondItem="84f-Kc-KEr" secondAttribute="centerY" id="Avx-Up-Eap"/>
@@ -45,27 +44,33 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cKo-vn-aXB">
                                                         <rect key="frame" x="0.0" y="0.0" width="206.5" height="134"/>
-                                                        <color key="backgroundColor" red="0.12941011790000001" green="0.12941065430000001" blue="0.12941181660000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="60"/>
-                                                        <state key="normal" title="Think"/>
+                                                        <state key="normal" title="Think and Fish">
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
                                                         <connections>
                                                             <action selector="tappedTimerButton:" destination="hxV-xq-zqS" eventType="touchUpInside" id="BP6-eN-JEA"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VBn-mr-VZK">
                                                         <rect key="frame" x="0.0" y="135" width="206.5" height="134"/>
-                                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                                        <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="60"/>
-                                                        <state key="normal" title="Cook"/>
+                                                        <state key="normal" title="Cook">
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
                                                         <connections>
                                                             <action selector="tappedTimerButton:" destination="hxV-xq-zqS" eventType="touchUpInside" id="wow-pO-bDg"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cQU-cZ-Ibx">
                                                         <rect key="frame" x="0.0" y="270" width="206.5" height="134"/>
-                                                        <color key="backgroundColor" systemColor="systemTealColor"/>
+                                                        <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="60"/>
-                                                        <state key="normal" title="Fish"/>
+                                                        <state key="normal" title="Fish">
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
                                                         <connections>
                                                             <action selector="tappedTimerButton:" destination="hxV-xq-zqS" eventType="touchUpInside" id="DnS-mp-U89"/>
                                                         </connections>
@@ -79,16 +84,20 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="206.5" height="302.5"/>
                                                         <color key="backgroundColor" systemColor="systemYellowColor"/>
                                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="60"/>
-                                                        <state key="normal" title="Start"/>
+                                                        <state key="normal" title="Start">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
                                                         <connections>
-                                                            <action selector="tappedStopWatchButton:" destination="hxV-xq-zqS" eventType="touchUpInside" id="2wU-di-hbl"/>
+                                                            <action selector="tappedStartButton:" destination="hxV-xq-zqS" eventType="touchUpInside" id="ZYW-fD-luv"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7oQ-4k-j2d">
                                                         <rect key="frame" x="0.0" y="303.5" width="206.5" height="100.5"/>
-                                                        <color key="backgroundColor" systemColor="systemRedColor"/>
+                                                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="40"/>
-                                                        <state key="normal" title="Edit"/>
+                                                        <state key="normal" title="Edit">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
                                                         <connections>
                                                             <action selector="edit:" destination="hxV-xq-zqS" eventType="touchUpInside" id="SMv-7x-mhU"/>
                                                         </connections>
@@ -104,7 +113,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Gsl-VD-4K6"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
                         <constraints>
                             <constraint firstItem="xG9-3F-raf" firstAttribute="top" secondItem="Gsl-VD-4K6" secondAttribute="top" id="DN1-gi-SIH"/>
                             <constraint firstAttribute="bottom" secondItem="xG9-3F-raf" secondAttribute="bottom" id="Heh-HA-IMK"/>
@@ -112,16 +121,18 @@
                             <constraint firstItem="xG9-3F-raf" firstAttribute="leading" secondItem="Gsl-VD-4K6" secondAttribute="leading" id="vFM-ie-EDf"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Timer" id="7Kp-Gw-tVI">
-                        <barButtonItem key="rightBarButtonItem" title="reset" id="NYf-ql-AC5">
+                    <navigationItem key="navigationItem" id="7Kp-Gw-tVI">
+                        <barButtonItem key="leftBarButtonItem" title="Reset" id="NYf-ql-AC5">
+                            <color key="tintColor" systemColor="systemRedColor"/>
                             <connections>
-                                <action selector="reset:" destination="hxV-xq-zqS" id="jcY-RW-dRE"/>
+                                <action selector="reset" destination="hxV-xq-zqS" id="tLl-Qz-Skc"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="display" destination="icH-VJ-hdC" id="tEJ-GO-gCo"/>
                         <outlet property="editButton" destination="7oQ-4k-j2d" id="5rN-bR-6sT"/>
+                        <outlet property="startButton" destination="3A4-SY-seT" id="j6c-H3-2MI"/>
                         <outletCollection property="buttons" destination="cKo-vn-aXB" collectionClass="NSMutableArray" id="quk-Ub-9jp"/>
                         <outletCollection property="buttons" destination="VBn-mr-VZK" collectionClass="NSMutableArray" id="08J-nG-BpN"/>
                         <outletCollection property="buttons" destination="cQU-cZ-Ibx" collectionClass="NSMutableArray" id="1O2-yd-gFV"/>
@@ -151,17 +162,14 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemTealColor">
-            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

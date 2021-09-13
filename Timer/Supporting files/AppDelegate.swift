@@ -22,15 +22,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   private func setupUserDefaultsIfNecessary() {
     if UserDefaults.standard.bool(forKey: DEFAULT_SETTING) == false {
       UserDefaults.standard.set(true, forKey: DEFAULT_SETTING)
-      let times = [30, 40, 60]
+      let times = [10, 40, 60]
       let titles = ["Think", "Cook", "Fish"]
       
-      //    UserDefaults.standard.set(-1, forKey: "targetTime")
-      
-      //Set timers default time
       for i in 0...2 {
         let userDefaults = UserDefaults.timers[i]
-        //      userDefaults.setValue(true, forKey: SCREEN_LOCK)
+        userDefaults.setValue(true, forKey: IS_SCREEN_ALWAYS_ON)
         userDefaults.setValue(times[i], forKey: TIME)
         userDefaults.setValue(titles[i], forKey: TITLE)
       }
