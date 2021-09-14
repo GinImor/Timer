@@ -17,6 +17,8 @@
 		DC5E7BF826ED946E00FF738B /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5E7BF726ED946E00FF738B /* Constant.swift */; };
 		DC5E7BFB26ED951A00FF738B /* UserDefaults+timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5E7BFA26ED951A00FF738B /* UserDefaults+timer.swift */; };
 		DC5E7C0426ED960400FF738B /* Int+timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5E7C0326ED960400FF738B /* Int+timer.swift */; };
+		DC60C1B726F01B2D002B5078 /* TimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC60C1B626F01B2D002B5078 /* TimePickerView.swift */; };
+		DC60C1BA26F01B9B002B5078 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC60C1B926F01B9B002B5078 /* SettingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		DC5E7BF726ED946E00FF738B /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		DC5E7BFA26ED951A00FF738B /* UserDefaults+timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+timer.swift"; sourceTree = "<group>"; };
 		DC5E7C0326ED960400FF738B /* Int+timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+timer.swift"; sourceTree = "<group>"; };
+		DC60C1B626F01B2D002B5078 /* TimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerView.swift; sourceTree = "<group>"; };
+		DC60C1B926F01B9B002B5078 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				DC5E7BF426ED944D00FF738B /* TimerViewController.swift */,
+				DC60C1B926F01B9B002B5078 /* SettingViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -115,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				DC5E7BE226ED92EC00FF738B /* Main.storyboard */,
+				DC60C1B626F01B2D002B5078 /* TimePickerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -194,8 +200,10 @@
 				DC5E7BFB26ED951A00FF738B /* UserDefaults+timer.swift in Sources */,
 				DC5E7BF826ED946E00FF738B /* Constant.swift in Sources */,
 				DC492F1826EDA89100D45F2F /* TimerStatus.swift in Sources */,
+				DC60C1BA26F01B9B002B5078 /* SettingViewController.swift in Sources */,
 				DC5E7BDD26ED92EC00FF738B /* AppDelegate.swift in Sources */,
 				DC5E7BDF26ED92EC00FF738B /* SceneDelegate.swift in Sources */,
+				DC60C1B726F01B2D002B5078 /* TimePickerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

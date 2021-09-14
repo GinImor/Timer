@@ -213,5 +213,5 @@ class TimerViewController: UIViewController {
     createStartButtonAnimation(isStarting: true)
     return Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(runTimer), userInfo: nil, repeats: true)
   }
-
+  
 }

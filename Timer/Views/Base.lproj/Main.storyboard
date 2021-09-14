@@ -100,6 +100,7 @@
                                                         </state>
                                                         <connections>
                                                             <action selector="edit:" destination="hxV-xq-zqS" eventType="touchUpInside" id="SMv-7x-mhU"/>
+                                                            <segue destination="Z0u-4X-Mrc" kind="presentation" identifier="Setting Timer" id="zCs-1f-amH"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -159,6 +160,114 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jc8-4g-xOW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-946.37681159420299" y="112.5"/>
+        </scene>
+        <!--Setting View Controller-->
+        <scene sceneID="Q6d-oT-9OV">
+            <objects>
+                <viewController id="ESp-P5-wO8" customClass="SettingViewController" customModule="Timer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EVf-Sv-Oic">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="48" translatesAutoresizingMaskIntoConstraints="NO" id="cd4-S2-k9N">
+                                <rect key="frame" x="16" y="72" width="382" height="452.5"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Meditation" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IwR-yr-g1n">
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="57.5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="35"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="tsX-7i-alA">
+                                        <rect key="frame" x="0.0" y="105.5" width="382" height="250"/>
+                                        <subviews>
+                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vr9-zD-QIW" customClass="TimePickerView" customModule="Timer" customModuleProvider="target">
+                                                <rect key="frame" x="31" y="0.0" width="320" height="250"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="250" id="lcE-jd-jnU"/>
+                                                </constraints>
+                                            </pickerView>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Irr-C7-O2h">
+                                        <rect key="frame" x="0.0" y="403.5" width="382" height="49"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ZQE-CD-BrY">
+                                                <rect key="frame" x="0.0" y="0.0" width="382" height="31"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Screen always on" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JSK-3q-Mdm">
+                                                        <rect key="frame" x="0.0" y="0.0" width="325" height="31"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UKN-q2-mUH">
+                                                        <rect key="frame" x="333" y="0.0" width="51" height="31"/>
+                                                    </switch>
+                                                </subviews>
+                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keep the screen on while timer is running" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jrq-od-C0L">
+                                                <rect key="frame" x="0.0" y="31" width="382" height="18"/>
+                                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="13"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="B7I-9M-uLA"/>
+                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                        <constraints>
+                            <constraint firstItem="B7I-9M-uLA" firstAttribute="trailing" secondItem="cd4-S2-k9N" secondAttribute="trailing" constant="16" id="aqJ-Lz-TVr"/>
+                            <constraint firstItem="cd4-S2-k9N" firstAttribute="top" secondItem="B7I-9M-uLA" secondAttribute="top" constant="16" id="dYc-Ve-SLX"/>
+                            <constraint firstItem="cd4-S2-k9N" firstAttribute="leading" secondItem="B7I-9M-uLA" secondAttribute="leading" constant="16" id="woN-xc-od3"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="mXk-6i-2Dc">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="bOT-jn-lga">
+                            <connections>
+                                <action selector="cancel:" destination="ESp-P5-wO8" id="CgR-OF-IOf"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="aWJ-Wn-yxE">
+                            <connections>
+                                <action selector="save:" destination="ESp-P5-wO8" id="wCS-YM-zLo"/>
+                                <segue destination="5Tn-Mj-Zde" kind="unwind" unwindAction="unwind:" id="Xtg-DV-gQ6"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="screenAlwaysOnSwitch" destination="UKN-q2-mUH" id="CKx-zh-NNI"/>
+                        <outlet property="timePickerView" destination="Vr9-zD-QIW" id="RIC-jt-HGY"/>
+                        <outlet property="titleTextField" destination="IwR-yr-g1n" id="PlH-Bk-uEw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sk3-Ir-AyS" sceneMemberID="firstResponder"/>
+                <exit id="5Tn-Mj-Zde" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1658" y="113"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Zua-zu-OzJ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Z0u-4X-Mrc" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="keT-Rl-U7U">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ESp-P5-wO8" kind="relationship" relationship="rootViewController" id="eUa-xN-CpW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Oww-bl-kmN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="839" y="113"/>
         </scene>
     </scenes>
     <resources>
