@@ -20,6 +20,8 @@ class TimerViewController: UIViewController {
   private var timerStatus = TimerStatus()
   private var runningTimer: Timer?
   
+  fileprivate let animator = PopAnimator()
+  
   // when reset and stop, screen will dimmed as usual, when run timer,
   // dim or not depend on setting, stop watch always screen on
   var isScreenAlwaysOn: Bool = false {
@@ -59,7 +61,7 @@ class TimerViewController: UIViewController {
     if let cachedSelectedTag = timerStatus.selectedTag {
       view.backgroundColor = .systemOrange
       let button = buttons[cachedSelectedTag]
-      button.setTitle(UserDefaults.timers[cachedSelectedTag].integer(forKey: TIME).timer, for: .normal)
+      button.setTitle(timerStatus.originalTime?.timer, for: .normal)
       button.transform = CGAffineTransform.identity.scaledBy(x: 0.95, y: 0.95)
       button.layer.cornerRadius = 8
       editButton.isEnabled = true
@@ -89,11 +91,11 @@ class TimerViewController: UIViewController {
   
   @objc private func runTimer() {
     if timerStatus.selectedTag != nil {
-      let targetTime = Int(timerStatus.startDate.timeIntervalSinceNow) + timerStatus.targetTime!
+      let targetTime = Int(timerStatus.startDate!.timeIntervalSinceNow) + timerStatus.targetTime!
       if targetTime < 1 { createBackgroundColorAnimation(changeTo: .systemGreen) }
       displayInterval(Double(targetTime))
     } else {
-      displayInterval(Date().timeIntervalSince(timerStatus.startDate) + timerStatus.stopWatchTime)
+      displayInterval(Date().timeIntervalSince(timerStatus.startDate!) + timerStatus.stopWatchTime)
     }
   }
   
@@ -124,10 +126,11 @@ class TimerViewController: UIViewController {
     display.text = ""
     startButton.setTitle(NSLocalizedString("Start", comment: ""), for: .normal)
     createStartButtonAnimation(isStarting: false)
-    // reset the timerStatus, no need to reset the startTime cause it doesn't decide the state
     timerStatus.isRunning = false
     timerStatus.stopWatchTime = 0
     timerStatus.targetTime = nil
+    timerStatus.originalTime = nil
+    timerStatus.startDate = nil
     if let cachedSelectedTag = timerStatus.selectedTag {
       timerStatus.selectedTag = nil
       // unselect the selected button
@@ -150,6 +153,7 @@ class TimerViewController: UIViewController {
       timerStatus.selectedTag = sender.tag
       let targetTime = UserDefaults.timers[sender.tag].integer(forKey: TIME)
       timerStatus.targetTime = targetTime
+      timerStatus.originalTime = targetTime
       displayInterval(Double(targetTime))
       editButton.isEnabled = true
       createAnimation(forButton: sender, isSelecting: true)
@@ -186,11 +190,11 @@ class TimerViewController: UIViewController {
       startButton.setTitle(NSLocalizedString("Start", comment: ""), for: .normal)
       createStartButtonAnimation(isStarting: false)
       if isStopWatch {
-        timerStatus.stopWatchTime += Date().timeIntervalSince(timerStatus.startDate)
+        timerStatus.stopWatchTime += Date().timeIntervalSince(timerStatus.startDate!)
         // display the last time, more accurate
         displayInterval(timerStatus.stopWatchTime)
       } else {
-        timerStatus.targetTime = Int(timerStatus.startDate.timeIntervalSinceNow) + timerStatus.targetTime!
+        timerStatus.targetTime = Int(timerStatus.startDate!.timeIntervalSinceNow) + timerStatus.targetTime!
       }
     } else {
       if isStopWatch { createBackgroundColorAnimation(changeTo: .systemGreen) }
@@ -200,8 +204,33 @@ class TimerViewController: UIViewController {
     }
   }
 
-  @IBAction func edit(_ sender: Any) {
+  @IBAction func edit(_ sender: UIButton) {
+    sender.alpha = 0.0
+    animator.originFrame = sender.superview!.convert(sender.frame, to: nil)
+    let settingNav = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "SettingNav") as! UINavigationController
+    let settingViewController = settingNav.topViewController as! SettingViewController
+    settingNav.transitioningDelegate = self
+    settingNav.modalPresentationStyle = .fullScreen
+    settingNav.navigationBar.alpha = 0.0
+    settingViewController.currentUserDefaults = UserDefaults.timers[timerStatus.selectedTag!]
     
+    settingViewController.settingDidSaveTimer = { [unowned self] (timerInterval, isScreenAlwaysOn) in
+      // three states, only selected, selected and is running, selected and stop
+      // if only selected, then change button title, target time and original time
+      // otherwise, continue the last previous target time, when restoring, use the
+      // original time to set the button title
+      if self.timerStatus.startDate == nil {
+        // only selected state, doesn't even have a start date
+        self.buttons[self.timerStatus.selectedTag!].setTitle(timerInterval.timer, for: .normal)
+        self.timerStatus.targetTime = timerInterval
+        self.timerStatus.originalTime = timerInterval
+        displayInterval(Double(timerInterval))
+      }
+      
+      self.isScreenAlwaysOn = isScreenAlwaysOn
+    }
+    
+    present(settingNav, animated: true)
   }
   
   private func scheduleTimerWithTimeInterval(_ interval: TimeInterval) -> Timer {
@@ -214,4 +243,21 @@ class TimerViewController: UIViewController {
     return Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(runTimer), userInfo: nil, repeats: true)
   }
   
+}
+
+
+extension TimerViewController: UIViewControllerTransitioningDelegate {
+  
+  func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    animator.isPresenting = true
+    return animator
+  }
+  
+  func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    animator.isPresenting = false
+    animator.didDismiss = { [weak self] in
+      self?.editButton.alpha = 1.0
+    }
+    return animator
+  }
 }

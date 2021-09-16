@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DC48E73E26F22A0E000C6E74 /* PopAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC48E73D26F22A0E000C6E74 /* PopAnimator.swift */; };
 		DC492F1826EDA89100D45F2F /* TimerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC492F1726EDA89100D45F2F /* TimerStatus.swift */; };
 		DC5E7BDD26ED92EC00FF738B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5E7BDC26ED92EC00FF738B /* AppDelegate.swift */; };
 		DC5E7BDF26ED92EC00FF738B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5E7BDE26ED92EC00FF738B /* SceneDelegate.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DC48E73D26F22A0E000C6E74 /* PopAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopAnimator.swift; sourceTree = "<group>"; };
 		DC492F1726EDA89100D45F2F /* TimerStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerStatus.swift; sourceTree = "<group>"; };
 		DC5E7BD926ED92EC00FF738B /* Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Timer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC5E7BDC26ED92EC00FF738B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +51,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DC48E73C26F229FF000C6E74 /* Animators */ = {
+			isa = PBXGroup;
+			children = (
+				DC48E73D26F22A0E000C6E74 /* PopAnimator.swift */,
+			);
+			path = Animators;
+			sourceTree = "<group>";
+		};
 		DC492F1626EDA87200D45F2F /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -76,6 +86,7 @@
 		DC5E7BDB26ED92EC00FF738B /* Timer */ = {
 			isa = PBXGroup;
 			children = (
+				DC48E73C26F229FF000C6E74 /* Animators */,
 				DC492F1626EDA87200D45F2F /* Models */,
 				DC5E7C0226ED95BB00FF738B /* Views */,
 				DC5E7BFE26ED954100FF738B /* ViewControllers */,
@@ -199,6 +210,7 @@
 				DC5E7C0426ED960400FF738B /* Int+timer.swift in Sources */,
 				DC5E7BFB26ED951A00FF738B /* UserDefaults+timer.swift in Sources */,
 				DC5E7BF826ED946E00FF738B /* Constant.swift in Sources */,
+				DC48E73E26F22A0E000C6E74 /* PopAnimator.swift in Sources */,
 				DC492F1826EDA89100D45F2F /* TimerStatus.swift in Sources */,
 				DC60C1BA26F01B9B002B5078 /* SettingViewController.swift in Sources */,
 				DC5E7BDD26ED92EC00FF738B /* AppDelegate.swift in Sources */,

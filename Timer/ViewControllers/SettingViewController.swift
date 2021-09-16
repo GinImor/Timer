@@ -14,7 +14,19 @@ class SettingViewController: UIViewController {
   @IBOutlet weak var timePickerView: TimePickerView!
   @IBOutlet weak var screenAlwaysOnSwitch: UISwitch!
   
-  var currentUserDefaults: UserDefaults! = UserDefaults.timers[0]
+  @IBOutlet weak var cancelButton: UIBarButtonItem!
+  @IBOutlet weak var saveButton: UIBarButtonItem!
+  
+  @IBOutlet weak var containerView: UIStackView!
+  var containerViewAlpha: CGFloat = 0.0 {
+    didSet {
+      containerView.alpha = containerViewAlpha
+    }
+  }
+  
+  var currentUserDefaults: UserDefaults!
+  
+  var settingDidSaveTimer: ((_ timeInterval: Int, _ isScreenAlwaysOn: Bool) -> Void)?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -22,6 +34,12 @@ class SettingViewController: UIViewController {
   }
   
   private func setupViews() {
+    if let navigationBar = self.navigationController?.navigationBar {
+      navigationBar.isTranslucent = true
+      navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+      navigationBar.shadowImage = UIImage()
+    }
+    
     titleTextField.delegate = self
     timePickerView.delegate = self
     titleTextField.text = currentUserDefaults.string(forKey: TITLE)
@@ -34,10 +52,22 @@ class SettingViewController: UIViewController {
   }
   
   @IBAction func save(_ sender: Any) {
+    let timeInterval = timePickerView.timeInterval
     currentUserDefaults.setValue(titleTextField.text, forKey: TITLE)
-    currentUserDefaults.setValue(timePickerView.timeInterval, forKey: TIME)
+    currentUserDefaults.setValue(timeInterval, forKey: TIME)
     currentUserDefaults.setValue(screenAlwaysOnSwitch.isOn, forKey: IS_SCREEN_ALWAYS_ON)
+    settingDidSaveTimer?(timeInterval, screenAlwaysOnSwitch.isOn)
     dismiss(animated: true)
+  }
+  
+  func showBarButtonItems() {
+    cancelButton.tintColor = .white
+    saveButton.tintColor = .white
+  }
+  
+  func hideBarButtonItems() {
+    cancelButton.tintColor = .clear
+    saveButton.tintColor = .clear
   }
   
 }
@@ -78,3 +108,4 @@ extension SettingViewController: UIPickerViewDelegate {
     timePickerView.didSelectRow(row, inComponent: component)
   }
 }
+

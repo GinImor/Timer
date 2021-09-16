@@ -99,8 +99,7 @@
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="edit:" destination="hxV-xq-zqS" eventType="touchUpInside" id="SMv-7x-mhU"/>
-                                                            <segue destination="Z0u-4X-Mrc" kind="presentation" identifier="Setting Timer" id="zCs-1f-amH"/>
+                                                            <action selector="edit:" destination="hxV-xq-zqS" eventType="touchUpInside" id="pqg-ir-trD"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -166,11 +165,11 @@
             <objects>
                 <viewController id="ESp-P5-wO8" customClass="SettingViewController" customModule="Timer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EVf-Sv-Oic">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="48" translatesAutoresizingMaskIntoConstraints="NO" id="cd4-S2-k9N">
-                                <rect key="frame" x="16" y="72" width="382" height="452.5"/>
+                            <stackView opaque="NO" alpha="0.0" contentMode="scaleToFill" axis="vertical" spacing="48" translatesAutoresizingMaskIntoConstraints="NO" id="cd4-S2-k9N">
+                                <rect key="frame" x="16" y="104" width="382" height="452.5"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Meditation" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IwR-yr-g1n">
                                         <rect key="frame" x="0.0" y="0.0" width="382" height="57.5"/>
@@ -229,35 +228,38 @@
                     </view>
                     <navigationItem key="navigationItem" id="mXk-6i-2Dc">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="bOT-jn-lga">
+                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="cancel:" destination="ESp-P5-wO8" id="CgR-OF-IOf"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="aWJ-Wn-yxE">
+                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="save:" destination="ESp-P5-wO8" id="wCS-YM-zLo"/>
-                                <segue destination="5Tn-Mj-Zde" kind="unwind" unwindAction="unwind:" id="Xtg-DV-gQ6"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="cancelButton" destination="bOT-jn-lga" id="VHv-0C-OET"/>
+                        <outlet property="containerView" destination="cd4-S2-k9N" id="DEU-oW-KOQ"/>
+                        <outlet property="saveButton" destination="aWJ-Wn-yxE" id="2ge-4j-E3Q"/>
                         <outlet property="screenAlwaysOnSwitch" destination="UKN-q2-mUH" id="CKx-zh-NNI"/>
                         <outlet property="timePickerView" destination="Vr9-zD-QIW" id="RIC-jt-HGY"/>
                         <outlet property="titleTextField" destination="IwR-yr-g1n" id="PlH-Bk-uEw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sk3-Ir-AyS" sceneMemberID="firstResponder"/>
-                <exit id="5Tn-Mj-Zde" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1658" y="113"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Zua-zu-OzJ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Z0u-4X-Mrc" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="SettingNav" automaticallyAdjustsScrollViewInsets="NO" id="Z0u-4X-Mrc" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="keT-Rl-U7U">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

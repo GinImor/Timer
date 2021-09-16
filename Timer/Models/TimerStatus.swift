@@ -11,7 +11,7 @@ import Foundation
 struct TimerStatus {
   
   // five states:
-  // timer button selected and running(isRunning) or has time to run(stopped or never run, targetTime != nil)
+  // timer button selected and running(isRunning), just selected(startDate == nil) or stopped
   // timer button not selected but stop watch is on, or is off(stopWatchTime has value > 0)
   // null state
   
@@ -20,14 +20,21 @@ struct TimerStatus {
     set { UserDefaults.standard.setValue(newValue, forKey: SELECTED_TAG)}
   }
   
-  var startDate: Date {
-    get { (UserDefaults.standard.object(forKey: START_DATE) as? Date) ?? Date() }
+  var startDate: Date? {
+    get { (UserDefaults.standard.object(forKey: START_DATE) as? Date) }
     set { UserDefaults.standard.setValue(newValue, forKey: START_DATE) }
   }
   
-  var targetTime: Int? {
+  // running target time, it change when you stop the timer
+  var targetTime: Int! {
     get { UserDefaults.standard.value(forKey: TARGET_TIME) as? Int }
     set { UserDefaults.standard.setValue(newValue, forKey: TARGET_TIME) }
+  }
+  
+  // last selected original target time, when select the timer button it record the target time
+  var originalTime: Int? {
+    get { UserDefaults.standard.value(forKey: ORIGINAL_TIME) as? Int }
+    set { UserDefaults.standard.setValue(newValue, forKey: ORIGINAL_TIME) }
   }
   
   var stopWatchTime: Double {
