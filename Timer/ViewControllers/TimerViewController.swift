@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class TimerViewController: UIViewController {
 
@@ -19,6 +20,10 @@ class TimerViewController: UIViewController {
   
   private var timerStatus = TimerStatus()
   private var runningTimer: Timer?
+  
+  private var userNotificationCenter: UNUserNotificationCenter {
+    return UNUserNotificationCenter.current()
+  }
   
   fileprivate let animator = PopAnimator()
   
@@ -139,6 +144,7 @@ class TimerViewController: UIViewController {
       editButton.isEnabled = false
       createAnimation(forButton: button, isSelecting: false)
     }
+    cancelUserNotification()
     createBackgroundColorAnimation(changeTo: .systemOrange)
   }
   
@@ -195,9 +201,14 @@ class TimerViewController: UIViewController {
         displayInterval(timerStatus.stopWatchTime)
       } else {
         timerStatus.targetTime = Int(timerStatus.startDate!.timeIntervalSinceNow) + timerStatus.targetTime!
+        cancelUserNotification()
       }
     } else {
-      if isStopWatch { createBackgroundColorAnimation(changeTo: .systemGreen) }
+      if isStopWatch {
+        createBackgroundColorAnimation(changeTo: .systemGreen)
+      } else {
+        sendUserNotification()
+      }
       timerStatus.isRunning = true
       timerStatus.startDate = Date()
       runningTimer = scheduleTimerWithTimeInterval(isStopWatch ? 0.01 : 0.05)
@@ -241,6 +252,25 @@ class TimerViewController: UIViewController {
     startButton.setTitle(NSLocalizedString("Stop", comment: ""), for: .normal)
     createStartButtonAnimation(isStarting: true)
     return Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(runTimer), userInfo: nil, repeats: true)
+  }
+  
+  private func sendUserNotification() {
+    let targetTime = timerStatus.targetTime!
+    if targetTime > 0 {
+      let content = UNMutableNotificationContent()
+      // if not allowed to show alert or play sounds, then the corresponding propertie is ignored
+      // so don't need to check it
+      content.title = "Timer"
+      content.sound = .default
+      content.categoryIdentifier = CATEGORY_IDENTIFIER
+      let trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(timerStatus.targetTime), repeats: false)
+      let request = UNNotificationRequest(identifier: REQUEST_IDENTIFIER, content: content, trigger: trigger)
+      userNotificationCenter.add(request, withCompletionHandler: nil)
+    }
+  }
+  
+  private func cancelUserNotification() {
+    userNotificationCenter.removePendingNotificationRequests(withIdentifiers: [REQUEST_IDENTIFIER])
   }
   
 }

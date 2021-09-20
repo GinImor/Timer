@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Timer
 let TIME = "time"
 let TITLE = "title"
 let IS_SCREEN_ALWAYS_ON = "isScreenAlwaysOn"
@@ -18,3 +19,7 @@ let ORIGINAL_TIME = "originalTime"
 let START_DATE = "startDate"
 let STOP_WATCH_TIME = "stopWatchTime"
 let IS_RUNNING = "isRunning"
+
+// Notification
+let CATEGORY_IDENTIFIER = "categoryIdentifier"
+let REQUEST_IDENTIFIER = "requestIdentifier"
