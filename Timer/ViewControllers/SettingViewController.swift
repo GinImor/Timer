@@ -62,7 +62,7 @@ class SettingViewController: UIViewController {
   
   func showBarButtonItems() {
     cancelButton.tintColor = .white
-    saveButton.tintColor = .white
+    saveButton.tintColor = .systemRed
   }
   
   func hideBarButtonItems() {

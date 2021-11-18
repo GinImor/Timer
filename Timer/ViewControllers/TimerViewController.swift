@@ -216,7 +216,6 @@ class TimerViewController: UIViewController {
   }
 
   @IBAction func edit(_ sender: UIButton) {
-    sender.alpha = 0.0
     animator.originFrame = sender.superview!.convert(sender.frame, to: nil)
     let settingNav = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "SettingNav") as! UINavigationController
     let settingViewController = settingNav.topViewController as! SettingViewController
@@ -241,7 +240,9 @@ class TimerViewController: UIViewController {
       self.isScreenAlwaysOn = isScreenAlwaysOn
     }
     
-    present(settingNav, animated: true)
+    present(settingNav, animated: true) {
+      sender.alpha = 0.0
+    }
   }
   
   private func scheduleTimerWithTimeInterval(_ interval: TimeInterval) -> Timer {

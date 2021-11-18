@@ -48,9 +48,9 @@ class TimePickerView: UIPickerView, UIPickerViewDataSource {
     
     let labelY: CGFloat = bounds.height / 2 - 15
     let labelSize = CGSize(width: 75, height: 30)
-    hoursLabel.frame = CGRect(origin: CGPoint(x: (bounds.width / 6) + 14, y: labelY), size: labelSize)
-    minutesLabel.frame = CGRect(origin: CGPoint(x: (bounds.width / 2) + 15, y: labelY), size: labelSize)
-    secondsLabel.frame = CGRect(origin: CGPoint(x: 5 * (bounds.width / 6) + 16, y: labelY), size: labelSize)
+    hoursLabel.frame = CGRect(origin: CGPoint(x: (bounds.width / 6) + 18, y: labelY), size: labelSize)
+    minutesLabel.frame = CGRect(origin: CGPoint(x: (bounds.width / 2) + 14, y: labelY), size: labelSize)
+    secondsLabel.frame = CGRect(origin: CGPoint(x: 5 * (bounds.width / 6) + 10, y: labelY), size: labelSize)
   }
   
 
